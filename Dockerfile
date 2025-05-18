@@ -1,5 +1,5 @@
 FROM nginx
-
+FROM node
 # 安装pnpm
 RUN npm install -g pnpm@8.15.9
 
