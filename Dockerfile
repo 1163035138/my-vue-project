@@ -12,11 +12,8 @@
 FROM node
 RUN npm install -g pnpm@8.15.9
 
-# 设置工作目录  
+COPY . /app
 WORKDIR /app
-
-# 将当前目录下的所有文件复制到容器的工作目录 `/app` 中
-COPY . .
 
 # 在容器中安装项目依赖
 RUN pnpm install
@@ -34,4 +31,4 @@ ENV TZ=Asia/Shanghai
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # `builder` 阶段中复制构建好的文件到 Nginx 容器的网页根目录 `/usr/share/nginx/html`
-COPY  /app/dist /usr/share/nginx/html
+COPY --from=builder /app/dist /usr/share/nginx/html
