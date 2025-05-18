@@ -1,14 +1,18 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <h1>{{ user }}</h1>
   </div>
 </template>
 <script setup>
 import axios from "axios";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
+const user = ref("");
 onMounted(() => {
+  // axios.get("/api/user").then((res) => {
+  //   user.value = res.data;
+  // });
   axios.get("http://localhost:3000/user").then((res) => {
-    console.log(res);
+    user.value = res.data;
   });
 });
 </script>
