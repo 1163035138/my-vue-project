@@ -25,7 +25,7 @@ RUN pnpm install
 RUN pnpm run build
 
 # 使用轻量级的官方 Nginx 镜像作为基础镜像
-FROM nginx:alpine
+FROM nginx
 
 # 时区
 ENV TZ=Asia/Shanghai
