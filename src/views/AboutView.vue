@@ -8,9 +8,6 @@ import axios from "axios";
 import { onMounted, ref } from "vue";
 const user = ref("");
 onMounted(() => {
-  // axios.get("/api/user").then((res) => {
-  //   user.value = res.data;
-  // });
   axios.get("http://localhost:3000/user").then((res) => {
     user.value = res.data;
   });
