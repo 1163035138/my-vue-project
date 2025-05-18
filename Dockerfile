@@ -9,7 +9,8 @@
 # COPY ./vue-front.conf /etc/nginx/conf.d/default.conf
 # EXPOSE 80
 # 使用最新的官方 Node.js 镜像作为基础镜像，并命名为 `builder` 阶段
-FROM node:latest AS builder
+FROM node
+RUN npm install -g pnpm@8.15.9
 
 # 设置工作目录  
 WORKDIR /app
@@ -18,10 +19,10 @@ WORKDIR /app
 COPY . .
 
 # 在容器中安装项目依赖
-RUN npm install
+RUN pnpm install
 
 # 在容器中构建项目
-RUN npm run build
+RUN pnpm run build
 
 # 使用轻量级的官方 Nginx 镜像作为基础镜像
 FROM nginx:alpine
