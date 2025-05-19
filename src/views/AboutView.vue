@@ -1,6 +1,7 @@
 <template>
   <div class="about">
     <h1>{{ user }}</h1>
+    <h1>略</h1>
   </div>
 </template>
 <script setup>
