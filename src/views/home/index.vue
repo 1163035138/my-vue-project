@@ -1,16 +1,19 @@
 <template>
   <div>
-    <Xiangce />
+    <h1>首页</h1>
   </div>
 </template>
 <script setup>
-import Xiangce from "@/components/3dpic/index.vue";
 import axios from "axios";
 import { onMounted } from "vue";
 onMounted(() => {
   axios({
     url: "/api/user",
-    method: "get",
+    method: "post",
+    data: {
+      name: "张三",
+      age: 18,
+    },
   });
 });
 </script>
